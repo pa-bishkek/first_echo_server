@@ -15,7 +15,7 @@ const error404 = (req, res) => {
 
 const staticImage = (req, res) => {
   const fstream = fs.createReadStream(
-    path.join(process.cwd(), "./static/image.jpg")
+    path.join(process.cwd(), "./static/ima.jpg")
   );
   fstream.pipe(res);
   fstream.on("data", chunk => {
@@ -23,6 +23,9 @@ const staticImage = (req, res) => {
   });
   fstream.on("end", () => {
     res.end();
+  });
+  fstream.on("error", () => {
+    res.end("=(");
   });
 };
 
